@@ -88,7 +88,9 @@ dependencies {
     implementation(libs.retorfit.gsonConverter)
     implementation(libs.icons)
 
+    //Logging
     implementation(libs.timber)
+    implementation(libs.napier)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

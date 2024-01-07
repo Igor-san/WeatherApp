@@ -16,7 +16,7 @@ dagger = "2.48.1"
 glide = "1.0.0-beta01"
 retrofit = "2.9.0"
 timber = "5.0.1"
-
+napier = "2.7.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -39,7 +39,7 @@ glide-compose = { group = "com.github.bumptech.glide", name = "compose", version
 retorfit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retorfit-gsonConverter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
-
+napier = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
 ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
