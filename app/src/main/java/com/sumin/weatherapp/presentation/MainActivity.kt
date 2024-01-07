@@ -9,10 +9,15 @@ import com.sumin.weatherapp.presentation.ui.theme.WeatherAppTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
+
+private const val TAG="MainActivity"
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Timber.tag(TAG)
 
         val apiService = ApiFactory.apiService
 
@@ -20,8 +25,7 @@ class MainActivity : ComponentActivity() {
             val currentWeather = apiService.loadCurrentWeather("London")
             val forecast = apiService.loadForecast("London")
             val cities = apiService.searchCity("London")
-            Log.d(
-                "MainActivity",
+            Timber.d(
                 "Current Weather: $currentWeather\nForecase Weather: $forecast\nCities:$cities"
             )
         }

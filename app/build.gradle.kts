@@ -88,6 +88,8 @@ dependencies {
     implementation(libs.retorfit.gsonConverter)
     implementation(libs.icons)
 
+    implementation(libs.timber)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
