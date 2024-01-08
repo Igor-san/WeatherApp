@@ -1,6 +1,7 @@
 package com.sumin.weatherapp.di
 
 import android.content.Context
+import com.sumin.weatherapp.presentation.MainActivity
 import dagger.BindsInstance
 import dagger.Component
 
@@ -8,10 +9,12 @@ import dagger.Component
 @ApplicationScope
 @Component(
     modules = [
-        DataModule::class
+        DataModule::class,
+        PresentationModule::class
     ]
 )
 interface ApplicationComponent {
+    fun inject(activity: MainActivity)
 
     @Component.Factory
     interface Factory {

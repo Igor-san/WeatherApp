@@ -4,7 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.arkivanov.decompose.defaultComponentContext
+import com.sumin.weatherapp.WeatherApp
 import com.sumin.weatherapp.data.network.api.ApiFactory
+import com.sumin.weatherapp.presentation.root.DefaultRootComponent
+import com.sumin.weatherapp.presentation.root.RootContent
 import com.sumin.weatherapp.presentation.ui.theme.WeatherAppTheme
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineScope
@@ -13,32 +17,23 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 
-private const val TAG="MainActivity"
+import javax.inject.Inject
+
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var rootComponentFactory: DefaultRootComponent.Factory
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        (applicationContext as WeatherApp).applicationComponent.inject(this)
+
         super.onCreate(savedInstanceState)
 
-        //Timber.tag(TAG)
-
-
-
-        val apiService = ApiFactory.apiService
-
-        CoroutineScope(Dispatchers.Main).launch {
-            val currentWeather = apiService.loadCurrentWeather("London")
-            val forecast = apiService.loadForecast("London")
-            val cities = apiService.searchCity("London")
-            Napier.d(
-                "Current Weather 1: $currentWeather\nForecase Weather: $forecast\nCities:$cities"
-            )
-
-            Napier.d(tag = TAG) { "Current Weather 2: $currentWeather\nForecase Weather: $forecast\nCities:$cities" }
-        }
+        // Create the root component before starting Compose
+        val root = rootComponentFactory.create(defaultComponentContext())
 
         setContent {
-            WeatherAppTheme {
-
-            }
+            RootContent(component = root )
         }
     }
 }
