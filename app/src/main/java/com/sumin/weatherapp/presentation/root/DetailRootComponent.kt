@@ -17,8 +17,10 @@ import com.sumin.weatherapp.presentation.search.OpenReason
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
+import io.github.aakira.napier.Napier
 import kotlinx.parcelize.Parcelize
 
+private const val TAG="DefaultRootComponent"
 class DefaultRootComponent @AssistedInject constructor(
     private val detailsComponentFactory: DefaultDetailsComponent.Factory,
     private val favouriteComponentFactory: DefaultFavouriteComponent.Factory,
@@ -37,8 +39,12 @@ class DefaultRootComponent @AssistedInject constructor(
     private fun child(
         config: Config, componentContext: ComponentContext
     ): RootComponent.Child {
+
+        Napier.d(tag = TAG) { "child config: ${config}" }
+
         return when (config) {
             is Config.Details -> {
+                Napier.d(tag = TAG) { "Details config: ${config}" }
                 val component = detailsComponentFactory.create(
                     city = config.city, onBackClicked = {
                         navigation.pop()
@@ -48,6 +54,8 @@ class DefaultRootComponent @AssistedInject constructor(
             }
 
             Config.Favourite -> {
+                Napier.d(tag = TAG) { "Favourite config: ${config}" }
+
                 val component = favouriteComponentFactory.create(onCityItemClicked = {
                     navigation.push(Config.Details(it))
                 }, onAddFavouriteClicked = {
@@ -60,6 +68,7 @@ class DefaultRootComponent @AssistedInject constructor(
             }
 
             is Config.Search -> {
+                Napier.d(tag = TAG) { "Search config: ${config}" }
                 val component =
                     searchComponentFactory.create(openReason = config.openReason, onBackClicked = {
                         navigation.pop()

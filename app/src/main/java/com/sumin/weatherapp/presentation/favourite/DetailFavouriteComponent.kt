@@ -5,14 +5,13 @@ import com.arkivanov.mvikotlin.core.instancekeeper.getStore
 import com.arkivanov.mvikotlin.extensions.coroutines.labels
 import com.arkivanov.mvikotlin.extensions.coroutines.stateFlow
 import com.sumin.weatherapp.domain.entity.City
-import com.sumin.weatherapp.presentation.extesions.componentScope
+import com.sumin.weatherapp.presentation.extensions.componentScope
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class DefaultFavouriteComponent @AssistedInject constructor(
     private val favouriteStoreFactory: FavouriteStoreFactory,

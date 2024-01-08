@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 import com.sumin.weatherapp.BuildConfig
-/*
+
 interface ApiService {
 
     @GET("current.json")
@@ -26,7 +26,8 @@ interface ApiService {
         @Query("q") query: String
     ): List<CityDto>
 }
-*/
+
+/*
 interface ApiService {
 
     @GET("current.json?key=${BuildConfig.WEATHER_API_KEY}")
@@ -44,4 +45,4 @@ interface ApiService {
     suspend fun searchCity(
         @Query("q") query: String
     ): List<CityDto>
-}
+}*/

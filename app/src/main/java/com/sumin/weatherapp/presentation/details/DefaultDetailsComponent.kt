@@ -4,11 +4,10 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.mvikotlin.core.instancekeeper.getStore
 import com.arkivanov.mvikotlin.extensions.coroutines.stateFlow
 import com.sumin.weatherapp.domain.entity.City
-import com.sumin.weatherapp.presentation.extesions.componentScope
+import com.sumin.weatherapp.presentation.extensions.componentScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 import com.arkivanov.mvikotlin.extensions.coroutines.labels
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
